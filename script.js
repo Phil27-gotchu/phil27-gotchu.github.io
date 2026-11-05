@@ -22,7 +22,7 @@
     now.getFullYear(),
   ].join(" ");
 
-  /* ---------- pixel-block name ---------- */
+  /* ---------- led dot-matrix name ---------- */
 
   // 5x7 bitmap font. Each glyph is seven rows, "#" = lit.
   const GLYPHS = {
@@ -72,7 +72,7 @@
     if (!canvas || !canvas.getContext) return { hide() {}, assemble() {}, settle() {}, refresh() {} };
 
     const ctx = canvas.getContext("2d");
-    const SUB = 2; // each font pixel is drawn as a 2x2 block of squares
+    const SUB = 2; // each font pixel is drawn as a 2x2 cluster of LED dots
     let parts = [];
     let glyphs = [];
     let cell = 6;
@@ -83,7 +83,9 @@
     let state = "live";
     let visible = true;
     let raf = 0;
-    let nextSwirl = performance.now() + 4000;
+    let nextWave = performance.now() + 4000;
+    let wave = null;
+    let ghosts = [];
     const pointer = { x: -9999, y: -9999 };
 
     const colsOf = (s) => {
@@ -116,6 +118,7 @@
 
       parts = [];
       glyphs = [];
+      ghosts = [];
       lines.forEach((line, li) => {
         const top = li * (lineH + gapH);
         let col = Math.floor((cols - colsOf(line)) / 2);
@@ -126,12 +129,17 @@
           glyphs.push({ cx: (col + 2.5) * SUB * cell, cy: top + lineH / 2 });
           rows.forEach((row, ry) => {
             for (let rx = 0; rx < 5; rx++) {
-              if (row[rx] !== "#") continue;
+              if (row[rx] !== "#") {
+                for (let sy = 0; sy < SUB; sy++) {
+                  for (let sx = 0; sx < SUB; sx++) ghosts.push({ x: ((col + rx) * SUB + sx) * cell, y: top + (ry * SUB + sy) * cell });
+                }
+                continue;
+              }
               for (let sy = 0; sy < SUB; sy++) {
                 for (let sx = 0; sx < SUB; sx++) {
                   const hx = ((col + rx) * SUB + sx) * cell;
                   const hy = top + (ry * SUB + sy) * cell;
-                  parts.push({ hx, hy, x: hx, y: hy, vx: 0, vy: 0, g: gi, on: true, at: 0, spark: Math.random() < 0.035 });
+                  parts.push({ hx, hy, x: hx, y: hy, vx: 0, vy: 0, g: gi, on: true, at: 0, waved: false, spark: Math.random() < 0.035 });
                 }
               }
             }
@@ -142,18 +150,21 @@
     }
 
     function step(t) {
-      const radius = Math.max(40, cell * 9);
+      const radius = Math.max(50, cell * 11);
       const r2 = radius * radius;
-      if (state === "live" && t > nextSwirl && glyphs.length) {
-        nextSwirl = t + rand(5000, 9000);
-        const gi = Math.floor(Math.random() * glyphs.length);
-        const g = glyphs[gi];
-        const dir = Math.random() < 0.5 ? -1 : 1;
+      if (state === "live" && t > nextWave && parts.length) {
+        nextWave = t + rand(5000, 9000);
+        wave = { start: t, dir: Math.random() < 0.5 ? 1 : -1 };
+        parts.forEach((p) => { p.waved = false; });
+      }
+      // A ripple runs across the name, lifting each column of dots as it passes.
+      if (wave) {
+        const front = ((t - wave.start) / 900) * (width + cell * 8);
+        const x = wave.dir > 0 ? front : width - front;
         parts.forEach((p) => {
-          if (p.g !== gi) return;
-          p.vx += -(p.y - g.cy) * 0.09 * dir;
-          p.vy += (p.x - g.cx) * 0.09 * dir;
+          if (!p.waved && Math.abs(p.hx - x) < cell * 1.5) { p.waved = true; p.vy -= cell * 0.55; }
         });
+        if (front > width + cell * 8) wave = null;
       }
       for (const p of parts) {
         if (!p.on) {
@@ -162,12 +173,13 @@
         }
         let ax = (p.hx - p.x) * 0.085;
         let ay = (p.hy - p.y) * 0.085;
-        const dx = p.x - pointer.x;
-        const dy = p.y - pointer.y;
+        // Magnetic pointer: dots lean toward the cursor, strongest up close.
+        const dx = pointer.x - p.x;
+        const dy = pointer.y - p.y;
         const d2 = dx * dx + dy * dy;
         if (d2 < r2) {
           const d = Math.sqrt(d2) || 1;
-          const f = (1 - d / radius) * 5;
+          const f = Math.pow(1 - d / radius, 2) * 2.4;
           ax += (dx / d) * f;
           ay += (dy / d) * f;
         }
@@ -178,19 +190,33 @@
       }
     }
 
+    function dot(x, y, r) {
+      ctx.moveTo(x + r * 2, y + r);
+      ctx.arc(x + r, y + r, r, 0, Math.PI * 2);
+    }
+
     function draw() {
       ctx.clearRect(0, 0, width, height);
-      const size = cell > 3 ? cell - 1 : cell - 0.5;
-      const lit = [];
+      const r = Math.max(0.8, (cell - (cell > 3 ? 1.2 : 0.6)) / 2);
       ctx.fillStyle = ink;
+      ctx.globalAlpha = 0.08;
+      ctx.beginPath();
+      for (const g of ghosts) dot(g.x, g.y, r);
+      ctx.fill();
+      ctx.globalAlpha = 1;
+      const lit = [];
+      ctx.beginPath();
       for (const p of parts) {
         if (!p.on) continue;
         const off = Math.abs(p.x - p.hx) + Math.abs(p.y - p.hy);
         if (p.spark || off > cell * 1.5) lit.push(p);
-        else ctx.fillRect(p.x, p.y, size, size);
+        else dot(p.x, p.y, r);
       }
+      ctx.fill();
       ctx.fillStyle = hot;
-      for (const p of lit) ctx.fillRect(p.x, p.y, size, size);
+      ctx.beginPath();
+      for (const p of lit) dot(p.x, p.y, r);
+      ctx.fill();
     }
 
     function frame(t) {
@@ -217,8 +243,8 @@
       parts.forEach((p) => {
         p.on = false;
         p.at = 0;
-        p.x = rand(0, width);
-        p.y = rand(0, height);
+        p.x = p.hx + rand(-cell, cell);
+        p.y = height + rand(cell * 2, cell * 10);
         p.vx = p.vy = 0;
       });
       draw();
@@ -228,7 +254,7 @@
       state = "live";
       const t = performance.now();
       parts.forEach((p) => { p.at = t + (p.hx / width) * 700 + rand(0, 250); });
-      nextSwirl = t + 4500;
+      nextWave = t + 4500;
       kick();
     }
 
