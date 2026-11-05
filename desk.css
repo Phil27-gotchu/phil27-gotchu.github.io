@@ -1,0 +1,414 @@
+/* Draggable "desk" hero. Loaded after style.css, so it overrides the plain hero. */
+
+:root {
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --paper-ink: #1e1b16;
+}
+
+.hero--desk {
+  display: block;
+  min-height: auto;
+  padding: 1.25rem 0 2rem;
+}
+
+.desk {
+  position: relative;
+  width: calc(100% - 3rem);
+  max-width: 1120px;
+  height: 760px;
+  margin: 0 auto;
+}
+
+.desk__title {
+  position: absolute;
+  left: 50%;
+  top: 0.5rem;
+  width: min(480px, 44%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transform: translateX(-50%);
+}
+
+.desk__title .hero__meta,
+.desk__title .hero__name {
+  margin-bottom: 1.1rem;
+}
+
+.desk__title .hero__tagline {
+  margin-bottom: 0.4rem;
+  font-size: 0.76rem;
+}
+
+.desk__hint {
+  color: var(--muted);
+  font-size: 0.66rem;
+}
+
+/* ---------- draggable pieces ---------- */
+
+.desk [data-drag] {
+  position: absolute;
+  left: var(--x, 0);
+  top: var(--y, 0);
+  z-index: 2;
+  translate: var(--dx, 0px) var(--dy, 0px);
+  rotate: var(--r, 0deg);
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: rotate 0.2s ease, scale 0.2s ease, box-shadow 0.2s ease, opacity 0.3s ease;
+}
+
+.desk [data-drag] a,
+.desk [data-drag] svg {
+  -webkit-user-drag: none;
+}
+
+.note,
+.flapcard,
+.polaroid,
+.ticket {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.06), 0 12px 26px -10px rgba(0, 0, 0, 0.35);
+}
+
+/* ---------- sticky notes ---------- */
+
+.note {
+  width: 236px;
+  padding: 1.1rem 1.2rem 1.2rem;
+  border-radius: 2px;
+  color: var(--paper-ink);
+  font-size: 0.74rem;
+  line-height: 1.5;
+}
+
+.note::before {
+  content: "";
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  width: 64px;
+  height: 18px;
+  translate: -50% 0;
+  rotate: -3deg;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.note--yellow { background: #f6d97a; }
+.note--violet { background: #cdb6ef; }
+.note--green { background: #bfe6c6; }
+.note--pink { background: #f7c1d4; }
+.note--blue { background: #bcd8f5; }
+
+.note__label {
+  margin-bottom: 0.75rem;
+  opacity: 0.75;
+}
+
+.note__item {
+  margin-bottom: 0.6rem;
+}
+
+.note__item b {
+  display: block;
+}
+
+.note__item span {
+  opacity: 0.7;
+}
+
+.note__links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.note a {
+  color: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.note--hero {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  min-height: 290px;
+  padding: 1.4rem 1.5rem;
+}
+
+.note__big {
+  margin-bottom: 1.4rem;
+  color: #1a1712;
+  font-family: var(--serif);
+  font-size: 1.85rem;
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+}
+
+.note__foot {
+  margin-top: auto;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+}
+
+.note__doodle {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  width: 72px;
+  color: var(--paper-ink);
+}
+
+.note__chips {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.note__chips li {
+  padding: 0.2rem 0.55rem;
+  border-radius: 3px;
+  background: rgba(20, 90, 45, 0.14);
+}
+
+/* visitor notes */
+
+.note--new {
+  width: 200px;
+  min-height: 150px;
+}
+
+.note__edit {
+  min-height: 5em;
+  outline: none;
+  font-size: 0.85rem;
+  cursor: text;
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+.note__sign {
+  margin-top: 0.5rem;
+  font-size: 0.64rem;
+  opacity: 0.6;
+}
+
+.note__close {
+  position: absolute;
+  top: 4px;
+  right: 8px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-size: 1rem;
+  line-height: 1;
+  opacity: 0.45;
+  cursor: pointer;
+}
+
+.note__close:hover {
+  opacity: 0.9;
+}
+
+/* ---------- split-flap card ---------- */
+
+.flapcard {
+  width: 284px;
+  padding: 0.9rem 1rem 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 3px;
+  background: #f4f2ec;
+  color: #222;
+}
+
+.flapcard__title {
+  margin-bottom: 0.6rem;
+  font-size: 0.74rem;
+}
+
+.flapcard__row {
+  --tile: 21px;
+  display: flex;
+  gap: 3px;
+  margin-top: 4px;
+}
+
+.flapcard .flap {
+  border-color: #cfcac0;
+  background: #fff;
+  box-shadow: 0 1px 0 #d9d4ca;
+  color: #1d1d1d;
+}
+
+.flapcard .flap.is-set {
+  border-color: #b9b3a7;
+}
+
+.flapcard .flap.is-space {
+  background: #f8f7f3;
+}
+
+.flapcard .flap::after {
+  background: rgba(0, 0, 0, 0.12);
+}
+
+/* ---------- polaroid ---------- */
+
+.polaroid {
+  width: 214px;
+  margin: 0;
+  padding: 10px 10px 0;
+  background: #fbfaf6;
+  color: #222;
+}
+
+.polaroid__photo {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.polaroid__cap {
+  padding: 0.65rem 0.2rem 0.85rem;
+  font-size: 0.72rem;
+}
+
+/* ---------- ticket ---------- */
+
+.ticket {
+  width: 210px;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--paper-ink);
+  border-radius: 12px;
+  background: #f7ecc8;
+  color: var(--paper-ink);
+  text-align: center;
+  box-shadow: 0 0 0 4px #fff, 0 12px 24px -8px rgba(0, 0, 0, 0.35);
+}
+
+.ticket:hover {
+  text-decoration: none;
+}
+
+.ticket b {
+  display: block;
+  font-size: 0.95rem;
+}
+
+.ticket span {
+  font-size: 0.66rem;
+  opacity: 0.7;
+}
+
+/* ---------- stickers ---------- */
+
+.sticker {
+  display: block;
+  width: var(--s, 64px);
+  height: var(--s, 64px);
+  padding: 8px;
+  border-radius: 50%;
+  background: #fff;
+  color: #1d1d1d;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 6px 14px -6px rgba(0, 0, 0, 0.4);
+}
+
+.sticker svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.sticker:hover {
+  rotate: calc(var(--r, 0deg) + 10deg);
+  scale: 1.08;
+}
+
+/* Must come after the hover rules so a grabbed piece always straightens out. */
+.desk [data-drag].is-dragging {
+  z-index: 50;
+  rotate: calc(var(--r, 0deg) * 0.3);
+  scale: 1.04;
+  cursor: grabbing;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.06), 0 24px 40px -12px rgba(0, 0, 0, 0.45);
+}
+
+.desk__add {
+  position: absolute;
+  left: 50%;
+  top: 712px;
+  translate: -50% 0;
+  padding: 0.3rem 0.6rem;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.72rem;
+  cursor: pointer;
+}
+
+.desk__add:hover {
+  color: var(--ink);
+}
+
+/* ---------- small screens: a tidy pile instead of a desk ---------- */
+
+@media (max-width: 900px) {
+  .desk {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1.6rem 1rem;
+    height: auto;
+    padding-bottom: 1rem;
+  }
+
+  .desk__title {
+    position: static;
+    width: 100%;
+    transform: none;
+    margin-bottom: 0.5rem;
+  }
+
+  .desk [data-drag] {
+    position: relative;
+    left: auto;
+    top: auto;
+    translate: none;
+    cursor: auto;
+    touch-action: auto;
+  }
+
+  .note,
+  .note--hero,
+  .flapcard,
+  .polaroid {
+    width: min(100%, 320px);
+  }
+
+  .sticker {
+    order: 5;
+  }
+
+  .desk__add {
+    position: static;
+    order: 6;
+    width: 100%;
+    translate: none;
+  }
+}

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="paper">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Philip, CSE student at MIT World Peace University, Pune, building fintech tools and computer vision projects.">
+  <title>Philip | portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    (function () {
+      var d = document.documentElement;
+      try { var t = localStorage.getItem("theme"); if (t) d.dataset.theme = t; } catch (e) {}
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) d.classList.add("swarm-on");
+      // Content starts hidden for the swarm; never leave it hidden if script.js fails to load.
+      setTimeout(function () { if (!window.__swarmReady) d.classList.remove("swarm-on"); }, 3000);
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary">
+      <a class="nav__brand" href="#hero" data-build="text">~/philip</a>
+      <div class="nav__right">
+        <ul class="nav__menu" id="nav-menu">
+          <li data-build="chip"><a href="#about">about</a></li>
+          <li data-build="chip"><a href="#skills">skills</a></li>
+          <li data-build="chip"><a href="#projects">projects</a></li>
+          <li data-build="chip"><a href="#lab">lab</a></li>
+          <li data-build="chip"><a href="#terminal">terminal</a></li>
+          <li data-build="chip"><a href="#contact">contact</a></li>
+        </ul>
+        <div class="themes" role="group" aria-label="Color theme" data-build="chip">
+          <button type="button" class="themes__dot" data-theme-btn="paper" aria-label="Paper theme" aria-pressed="true" style="--d1:#f7f0d4;--d2:#b8741a"></button>
+          <button type="button" class="themes__dot" data-theme-btn="night" aria-label="Night theme" aria-pressed="false" style="--d1:#0e100f;--d2:#4ade80"></button>
+          <button type="button" class="themes__dot" data-theme-btn="ocean" aria-label="Ocean theme" aria-pressed="false" style="--d1:#0c1a28;--d2:#4cc9f0"></button>
+          <button type="button" class="themes__dot" data-theme-btn="ink" aria-label="Ink theme" aria-pressed="false" style="--d1:#f3f3f0;--d2:#e63946"></button>
+          <button type="button" class="themes__dot" data-theme-btn="grape" aria-label="Grape theme" aria-pressed="false" style="--d1:#18131f;--d2:#c084fc"></button>
+        </div>
+        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu">[menu]</button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <div class="container hero__inner">
+        <p class="hero__meta" data-build="text"><span id="today">--</span> <span class="hero__meta-dim">· pune / web</span></p>
+        <h1 class="visually-hidden" id="hero-title">Philip</h1>
+        <div class="hero__name" data-build="pixels">
+          <canvas id="pixel-name" data-text="PHILIP" aria-hidden="true"></canvas>
+        </div>
+        <p class="hero__tagline" data-build="text"><span class="prompt">&gt;</span> cse @ mit-wpu pune · fintech tools · computer vision</p>
+        <div class="hero__actions">
+          <a class="btn btn--solid" href="#projects" data-build="chip">view projects</a>
+          <a class="btn btn--line" href="#contact" data-build="chip">contact</a>
+          <a class="btn btn--text" href="#terminal" data-open-terminal data-build="chip">open terminal_</a>
+        </div>
+      </div>
+      <div class="hero__scroll" aria-hidden="true" data-build="chip"><span>scroll</span><i></i></div>
+    </section>
+
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <h2 class="section__title" id="about-title" data-build="text"><span class="section__num">01</span> // about</h2>
+        <div class="about">
+          <div class="about__text">
+            <p data-build="text">hey, i'm <strong>philip</strong>, a be computer science engineering student at mit world peace university, pune.</p>
+            <p data-build="text">i like the places where code meets money and pixels: <em>options pricing</em>, <em>hedging simulations</em>, and <em>real-time computer vision</em>.</p>
+            <p data-build="text">i co-authored a research paper on sign language recognition, and i'm hunting for <strong>internships</strong> and more <strong>research</strong> to work on.</p>
+            <p data-build="text">when i'm not building something, i'm reading papers i only half understand until i understand them.</p>
+            <p class="about__now" data-build="text"><span class="about__label">currently:</span> [what you're working on or learning right now]</p>
+          </div>
+          <div class="whoami" data-build="box">
+            <pre data-build="text">$ whoami
+> philip
+
+$ pwd
+> /pune/india
+
+$ degree
+> be cse · mit-wpu
+
+$ looking_for
+> internships · research</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills" aria-labelledby="skills-title">
+      <div class="container">
+        <h2 class="section__title" id="skills-title" data-build="text"><span class="section__num">02</span> // skills</h2>
+        <div class="skills">
+          <div class="skills__group skills__group--lang">
+            <h3 class="skills__heading" data-build="text">languages</h3>
+            <ul class="pills">
+              <li data-build="chip"><span class="sq"></span>python</li>
+              <li data-build="chip"><span class="sq"></span>c++</li>
+              <li data-build="chip"><span class="sq"></span>javascript</li>
+              <li data-build="chip"><span class="sq"></span>html/css</li>
+              <li data-build="chip"><span class="sq"></span>sql</li>
+            </ul>
+          </div>
+          <div class="skills__group skills__group--tools">
+            <h3 class="skills__heading" data-build="text">tools</h3>
+            <ul class="pills">
+              <li data-build="chip"><span class="sq"></span>git</li>
+              <li data-build="chip"><span class="sq"></span>node.js</li>
+              <li data-build="chip"><span class="sq"></span>streamlit</li>
+              <li data-build="chip"><span class="sq"></span>opencv</li>
+              <li data-build="chip"><span class="sq"></span>linux</li>
+            </ul>
+          </div>
+          <div class="skills__group skills__group--domains">
+            <h3 class="skills__heading" data-build="text">domains</h3>
+            <ul class="pills">
+              <li data-build="chip"><span class="sq"></span>quant finance</li>
+              <li data-build="chip"><span class="sq"></span>computer vision</li>
+              <li data-build="chip"><span class="sq"></span>web dev</li>
+              <li data-build="chip"><span class="sq"></span>research</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <h2 class="section__title" id="projects-title" data-build="text"><span class="section__num">03</span> // projects</h2>
+        <!-- Links with an empty href are hidden automatically. -->
+        <div class="projects-grid">
+          <article class="card" data-build="box">
+            <div class="card__head" data-build="text"><h3 class="card__title">dynamic delta hedging simulator</h3><span class="card__year">[yyyy]</span></div>
+            <p class="card__desc" data-build="text">prices options and simulates dynamic delta hedging, so you can watch how rebalancing frequency and volatility move the hedging p&amp;l. an interactive streamlit app plus a separate node.js version.</p>
+            <ul class="tags" data-build="box" aria-label="Tech stack">
+              <li>python</li><li>streamlit</li><li>node.js</li><li>finance</li>
+            </ul>
+            <p class="card__links" data-build="text">
+              <a href="[GitHub repo URL]" target="_blank" rel="noopener noreferrer">github ↗</a>
+              <a href="" target="_blank" rel="noopener noreferrer">live ↗</a>
+            </p>
+          </article>
+
+          <article class="card" data-build="box">
+            <div class="card__head" data-build="text"><h3 class="card__title">hand sign-to-text</h3><span class="card__year">[yyyy]</span></div>
+            <p class="card__desc" data-build="text">real-time sign language recognition that turns hand signs from a webcam feed into text. written in c++ with opencv, with a co-authored research paper behind it.</p>
+            <ul class="tags" data-build="box" aria-label="Tech stack">
+              <li>c++</li><li>opencv</li><li>computer vision</li>
+            </ul>
+            <p class="card__links" data-build="text">
+              <a href="[GitHub repo URL]" target="_blank" rel="noopener noreferrer">github ↗</a>
+              <a href="[Paper URL]" target="_blank" rel="noopener noreferrer">paper ↗</a>
+              <a href="" target="_blank" rel="noopener noreferrer">live ↗</a>
+            </p>
+          </article>
+
+          <article class="card" data-build="box">
+            <div class="card__head" data-build="text"><h3 class="card__title">[project title]</h3><span class="card__year">[yyyy]</span></div>
+            <p class="card__desc" data-build="text">[short description of another project.]</p>
+            <ul class="tags" data-build="box" aria-label="Tech stack">
+              <li>[tag]</li><li>[tag]</li>
+            </ul>
+            <p class="card__links" data-build="text">
+              <a href="[GitHub repo URL]" target="_blank" rel="noopener noreferrer">github ↗</a>
+              <a href="" target="_blank" rel="noopener noreferrer">live ↗</a>
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="lab" aria-labelledby="lab-title">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title" id="lab-title" data-build="text"><span class="section__num">04</span> // options lab</h2>
+          <p class="section__hint" data-build="text">black-scholes, live. drag anything.</p>
+        </div>
+        <div class="lab" data-build="box">
+          <form class="lab__controls" id="lab-form" aria-label="Option inputs">
+            <div class="lab__type" role="radiogroup" aria-label="Option type">
+              <label><input type="radio" name="type" value="call" checked> call</label>
+              <label><input type="radio" name="type" value="put"> put</label>
+            </div>
+            <label class="lab__field">
+              <span>spot price <output data-for="spot"></output></span>
+              <input type="range" name="spot" min="50" max="150" step="0.5" value="100">
+            </label>
+            <label class="lab__field">
+              <span>strike <output data-for="strike"></output></span>
+              <input type="range" name="strike" min="50" max="150" step="1" value="105">
+            </label>
+            <label class="lab__field">
+              <span>volatility <output data-for="vol" data-suffix="%"></output></span>
+              <input type="range" name="vol" min="5" max="100" step="1" value="25">
+            </label>
+            <label class="lab__field">
+              <span>days to expiry <output data-for="days" data-suffix="d"></output></span>
+              <input type="range" name="days" min="1" max="365" step="1" value="45">
+            </label>
+            <label class="lab__field">
+              <span>risk-free rate <output data-for="rate" data-suffix="%"></output></span>
+              <input type="range" name="rate" min="0" max="12" step="0.25" value="6.5">
+            </label>
+          </form>
+
+          <div class="lab__chart">
+            <canvas id="lab-chart" role="img" aria-label="Option value today and payoff at expiry across spot prices"></canvas>
+            <p class="lab__legend" aria-hidden="true">
+              <span class="lab__key lab__key--value"></span>value today
+              <span class="lab__key lab__key--payoff"></span>payoff at expiry
+              <span class="lab__key lab__key--delta"></span>delta tangent
+            </p>
+          </div>
+
+          <dl class="lab__greeks">
+            <div><dt>price</dt><dd id="g-price">–</dd></div>
+            <div><dt>delta</dt><dd id="g-delta">–</dd></div>
+            <div><dt>gamma</dt><dd id="g-gamma">–</dd></div>
+            <div><dt>theta / day</dt><dd id="g-theta">–</dd></div>
+            <div><dt>vega / 1%</dt><dd id="g-vega">–</dd></div>
+          </dl>
+
+          <div class="lab__hedge">
+            <div class="lab__hedge-head">
+              <h3 class="lab__hedge-title">sell it, then delta-hedge it</h3>
+              <div class="lab__hedge-actions">
+                <label class="lab__select">rebalance
+                  <select id="hedge-freq">
+                    <option value="1">daily</option>
+                    <option value="5">every 5 days</option>
+                    <option value="0">once, never again</option>
+                  </select>
+                </label>
+                <button type="button" class="btn btn--solid" id="hedge-run">re-roll 500 paths</button>
+              </div>
+            </div>
+            <canvas id="hedge-chart" role="img" aria-label="Histogram of profit and loss for hedged and unhedged positions"></canvas>
+            <p class="lab__legend" aria-hidden="true">
+              <span class="lab__key lab__key--naked"></span>unhedged p&amp;l
+              <span class="lab__key lab__key--hedged"></span>hedged p&amp;l
+            </p>
+            <p class="lab__result" id="hedge-result" aria-live="polite"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="terminal" aria-labelledby="terminal-title">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title" id="terminal-title" data-build="text"><span class="section__num">05</span> // terminal</h2>
+          <p class="section__hint" data-build="text">type <kbd>help</kbd> to begin.</p>
+        </div>
+        <div class="term" data-build="box">
+          <div class="term__bar">
+            <span class="term__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="term__title">visitor@portfolio: ~</span>
+          </div>
+          <div class="term__body" id="term-body">
+            <div class="term__out" id="term-out" role="log" aria-live="polite">
+              <p>welcome. this terminal is real: try <b>help</b>, <b>bs call 100 105 25 45</b>, <b>theme night</b> or <b>rebuild</b>.</p>
+            </div>
+            <form class="term__line" id="term-form" autocomplete="off">
+              <label class="term__prompt" for="term-input">visitor@portfolio:~$</label>
+              <input class="term__input" id="term-input" type="text" spellcheck="false" autocapitalize="off" aria-label="Terminal command">
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <h2 class="section__title" id="contact-title" data-build="text"><span class="section__num">06</span> // contact</h2>
+        <p class="contact__intro" data-build="text">open to internships and research collaborations. email is the fastest way to reach me.</p>
+        <ul class="contact__list">
+          <li data-build="text"><span class="contact__key">email</span><a href="mailto:[your email]">[your email]</a></li>
+          <li data-build="text"><span class="contact__key">github</span><a href="[your GitHub URL]" target="_blank" rel="noopener noreferrer">[your GitHub URL]</a></li>
+          <li data-build="text"><span class="contact__key">linkedin</span><a href="[your LinkedIn URL]" target="_blank" rel="noopener noreferrer">[your LinkedIn URL]</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p data-build="text">© <span id="year"></span> philip · built live by a swarm of cursors</p>
+    </div>
+  </footer>
+
+  <div class="swarm-hud" id="swarm-hud" hidden>
+    <span class="swarm-hud__avatars" id="swarm-avatars" aria-hidden="true"></span>
+    <span class="swarm-hud__info">
+      <span class="swarm-hud__text" id="swarm-hud-text">swarm</span>
+      <span class="swarm-hud__bar" aria-hidden="true"><i id="swarm-progress"></i></span>
+    </span>
+    <button type="button" class="swarm-hud__skip" id="swarm-skip">skip <kbd>esc</kbd></button>
+  </div>
+
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
