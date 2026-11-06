@@ -29,7 +29,7 @@ Any static host works for deployment (GitHub Pages, Netlify, Cloudflare Pages, a
 
 - **Split-flap greeting.** The page opens on a departure-board style "IT'S PHILIP" screen. Click anywhere to skip it.
 - **Swarm build.** Then up to eight named cursors (Ada, Linus, Grace, Dennis, Ken, Barbara, Alan, Margaret; five on narrow screens) drag out boxes and type the text of the whole page, from the nav bar down, building whatever is on screen as you scroll. If you jump ahead (say, with a nav link), the sections you skipped stay blank until you scroll back to them, and the cursors build them then. A HUD shows who's editing and the progress. Press **Esc** or **skip** to show everything at once.
-- **Draggable desk.** The hero is a desk of sticky notes, a split-flap card that cycles through phrases, a candlestick-chart polaroid, a "see my work" ticket and stickers. Everything on it can be dragged around (on screens wider than 900px), and **+ add a sticky note** lets visitors write their own notes.
+- **Draggable desk.** The hero is a desk of sticky notes, a split-flap card that cycles through phrases, a polaroid photo, a "Philip 5.5" chat box that opens the terminal, a "see my work" ticket and stickers. Everything on it can be dragged around (on screens wider than 900px), and **+ add a sticky note** lets visitors write their own notes.
 - **LED name.** The hero name is drawn on a canvas as a dot-matrix LED sign (5×7 bitmap font, with faint unlit dots behind it). The dots rise into place when the swarm reaches it, lean toward your cursor like it's magnetic, and a ripple runs across them every few seconds.
 - **About, skills, projects, contact.** Plain content sections. Project cards hide links whose `href` is empty.
 - **Options lab.** A live Black-Scholes pricer: drag spot, strike, volatility, days to expiry and the risk-free rate to see the price, delta, gamma, theta and vega, plus a chart of value today against payoff at expiry. Below it, a delta-hedging simulation sells the option and runs 500 random price paths, comparing hedged and unhedged P&L for daily, every-5-days or one-time rebalancing.
@@ -49,8 +49,6 @@ All content is in `index.html`. Anything marked `data-build="text"`, `"box"`, `"
 
 These placeholders still need real values:
 
-- `[what you're working on or learning right now]` in the about section
-- `[yyyy]` years and `[GitHub repo URL]` / `[Paper URL]` links on the project cards
 - the third project card (`[project title]`, `[short description of another project.]`, `[tag]`)
 - `[your email]`, `[your GitHub URL]` and `[your LinkedIn URL]` in the contact section
 
@@ -122,6 +120,7 @@ There's a self-contained test page in [`demo/index.html`](demo/index.html) (an i
 | `style.css` | Layout, themes and swarm-cursor styles |
 | `script.js` | Split-flap greeting, pixel name, swarm build, options lab, terminal, themes and custom cursor |
 | `desk.css`, `desk.js` | The draggable desk hero: dragging, the split-flap card and visitor sticky notes |
+| `asset/` | Photos. `me.webp` (polaroid) and `philip-chat.webp` (chat box) are the web-sized copies the site uses; the large `.png` files are the originals |
 | `_old-site/` | Backup of the previous, non-desk version of the site |
 | `swarm-rebuild/manifest.json` | Extension manifest (V3); permissions are `activeTab` and `scripting` only |
 | `swarm-rebuild/background.js` | Handles the toolbar click: takes the media-only screenshot, then injects `swarm.js` (or toggles it off) |

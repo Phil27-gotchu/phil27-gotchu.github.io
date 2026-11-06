@@ -63,7 +63,8 @@
 }
 
 .desk [data-drag] a,
-.desk [data-drag] svg {
+.desk [data-drag] svg,
+.desk [data-drag] img {
   -webkit-user-drag: none;
 }
 
@@ -279,6 +280,28 @@
   display: block;
   width: 100%;
   height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+/* ---------- "philip 5.5" chat box ---------- */
+
+.chatbar {
+  display: block;
+  width: 340px;
+  border-radius: 14px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08), 0 12px 26px -10px rgba(0, 0, 0, 0.45);
+}
+
+.chatbar img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+}
+
+.chatbar:hover {
+  scale: 1.02;
 }
 
 .polaroid__cap {
@@ -397,7 +420,8 @@
   .note,
   .note--hero,
   .flapcard,
-  .polaroid {
+  .polaroid,
+  .chatbar {
     width: min(100%, 320px);
   }
 
