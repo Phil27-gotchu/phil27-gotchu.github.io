@@ -10,7 +10,7 @@ Both the site intro and the extension are a tribute to **[Swarm](https://califa.
 
 The motion design is his: the cursor set, the swarm and flocking physics, the build choreography (rects, typing, guides, duplicates), the rulers and the overall look. Large parts of the extension's animation engine are adapted directly from his site. What this project adds is pointing it at *any* page (snapshotting a live DOM into a blueprint the swarm can rebuild) and a smaller version of the effect for this portfolio.
 
-Go look at the original. It's better than this.
+
 
 ## The portfolio
 
