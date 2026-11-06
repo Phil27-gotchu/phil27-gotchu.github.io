@@ -50,8 +50,6 @@ All content is in `index.html`. Anything marked `data-build="text"`, `"box"`, `"
 These placeholders still need real values:
 
 - the third project card (`[project title]`, `[short description of another project.]`, `[tag]`)
-- `[your email]`, `[your GitHub URL]` and `[your LinkedIn URL]` in the contact section
-
 ## Swarm Rebuild (Chrome extension)
 
 A Chrome extension that wipes any web page to a blank canvas and lets a swarm of multiplayer cursors build it back, live: crosshair-drawn boxes, typed text, pen-tool lines, ruler guides and ⌥-drag duplicates, until the page looks just like it did before.

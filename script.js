@@ -1162,7 +1162,7 @@
         "  [" + $$(".tags li", card).map(text).join(", ") + "]",
       ]),
       skills: () => $$(".skills__group").map((g) => `${text($("h3", g))}: ${$$("li", g).map(text).join(", ")}`),
-      contact: () => $$(".contact__list li").map((li) => `${text($(".contact__key", li)).padEnd(10)}${text($("a", li))}`),
+      contact: () => $$(".contact__link:not([href=''])").map((a) => `${text($(".contact__word", a)).padEnd(10)}${a.href.replace(/^mailto:/, "")}`),
       bs: (type, ...nums) => {
         const usage = "usage: bs <call|put> <spot> <strike> <vol%> <days> [rate%]   e.g. bs call 100 105 25 45";
         const [S, K, vol, days, rate = 6.5] = nums.map(Number);
