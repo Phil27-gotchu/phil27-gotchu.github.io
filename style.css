@@ -1087,28 +1087,6 @@ kbd {
   transform: scale(0.9);
 }
 
-.sw-tag {
-  position: absolute;
-  top: 17px;
-  left: 12px;
-  padding: 3px 8px 3px 7px;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  font-size: 11px;
-  font-weight: 500;
-  line-height: 14px;
-  letter-spacing: 0.01em;
-  color: #fff;
-  white-space: nowrap;
-  background: var(--c);
-  border-radius: 3px 10px 10px 10px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 4px 10px -2px rgba(0, 0, 0, 0.18);
-}
-
-.sw-cursor.is-text .sw-tag {
-  top: 21px;
-  left: 9px;
-}
-
 .sw-sel {
   position: absolute;
   top: 0;

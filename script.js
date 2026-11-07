@@ -334,10 +334,7 @@
   /* ---------- swarm of cursors ---------- */
 
   const swarm = (function () {
-    const CREW = [
-      ["Ada", "#0d99ff"], ["Linus", "#9747ff"], ["Grace", "#f24822"], ["Dennis", "#14ae5c"],
-      ["Ken", "#f5a000"], ["Barbara", "#e5379b"], ["Alan", "#0aa5a5"], ["Margaret", "#5b5bd6"],
-    ];
+    const CREW = ["#0d99ff", "#9747ff", "#f24822", "#14ae5c", "#f5a000", "#e5379b", "#0aa5a5", "#5b5bd6"];
     const ARROW = '<svg class="sw-arrow" width="16" height="20" viewBox="0 0 16 20" aria-hidden="true"><path d="M1.5 1.2v14.6l3.9-3.6 2.6 5.9 2.6-1.1-2.6-5.8h5.4z" fill="currentColor" stroke="#fff" stroke-width="1.5" stroke-linejoin="round" paint-order="stroke"/></svg>';
     const IBEAM = '<svg class="sw-ibeam" width="12" height="22" viewBox="0 0 12 22" aria-hidden="true"><path d="M2.5 2.5h2.2c.6 0 1.3.4 1.3 1.2 0-.8.7-1.2 1.3-1.2h2.2M6 3.7v14.6M2.5 19.5h2.2c.6 0 1.3-.4 1.3-1.2 0 .8.7 1.2 1.3 1.2h2.2" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/><path d="M2.5 2.5h2.2c.6 0 1.3.4 1.3 1.2 0-.8.7-1.2 1.3-1.2h2.2M6 3.7v14.6M2.5 19.5h2.2c.6 0 1.3-.4 1.3-1.2 0 .8.7 1.2 1.3 1.2h2.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>';
     const INTRO_MS = 1000;
@@ -383,11 +380,11 @@
       return list;
     }
 
-    function makeCursor([name, color], i, all) {
+    function makeCursor(color, i, all) {
       const el = document.createElement("div");
       el.className = "sw-cursor";
       el.style.setProperty("--c", color);
-      el.innerHTML = ARROW + IBEAM + '<span class="sw-tag">' + name + "</span>";
+      el.innerHTML = ARROW + IBEAM;
       const selEl = document.createElement("div");
       selEl.className = "sw-sel";
       selEl.style.setProperty("--c", color);
@@ -403,7 +400,7 @@
       const cy = scrollY + innerHeight / 2;
       const reach = Math.hypot(innerWidth, innerHeight) / 2 + 40;
       const c = {
-        el, selEl, caretEl, color, name,
+        el, selEl, caretEl, color,
         badge: selEl.querySelector(".sw-badge"),
         x: cx + Math.cos(a) * reach, y: cy + Math.sin(a) * reach,
         anchor: null, tween: null, follow: null, sel: null, caret: null,
@@ -708,8 +705,6 @@
       avatars.textContent = "";
       cursors.forEach((c) => {
         c.avatar = document.createElement("span");
-        c.avatar.textContent = c.name[0];
-        c.avatar.title = c.name;
         c.avatar.style.setProperty("--c", c.color);
         avatars.append(c.avatar);
       });
