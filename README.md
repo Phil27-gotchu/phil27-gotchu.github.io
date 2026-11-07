@@ -1,14 +1,16 @@
 # ~/philip
 
-Personal portfolio of Philip, a BE Computer Science Engineering student at MIT World Peace University, Pune, working on fintech tools and computer vision.
+Personal portfolio of Philip Pereira, Im a  BE Computer Science Engineering student at MIT World Peace University, Pune, work with LLMs   and have a small  interest with quant finance tool and have built a  sustainable IoT Device  in health hardware and machine learning. I am currently building a SAN navigation system for a DRDO project.
 
-The site is a single static page (plain HTML, CSS and JavaScript, no build step or dependencies) that a swarm of multiplayer cursors builds in front of you as you scroll. The same repo also holds **Swarm Rebuild**, a Chrome extension that does the same thing to any web page.
+- **Email:** [philippereira2701@gmail.com](mailto:philippereira2701@gmail.com)
+- **GitHub:** [@Phil27-gotchu](https://github.com/Phil27-gotchu)
+- **LinkedIn:** [philip-pereira-a32146308](https://www.linkedin.com/in/philip-pereira-a32146308)
+
+The site is a single static page (plain HTML, CSS and JavaScript, no build step or dependencies) that a swarm of multiplayer cursors builds in front of you as you scroll. 
 
 ## Credit
 
 Both the site intro and the extension are a tribute to **[Swarm](https://califa.github.io/swarm-site/)** by **[Joel Califa](https://joelcalifa.com)** ([@califa](https://github.com/califa), [source](https://github.com/califa/swarm-site)), a website that builds itself as you scroll.
-
-The motion design is his: the cursor set, the swarm and flocking physics, the build choreography (rects, typing, guides, duplicates), the rulers and the overall look. Large parts of the extension's animation engine are adapted directly from his site. What this project adds is pointing it at *any* page (snapshotting a live DOM into a blueprint the swarm can rebuild) and a smaller version of the effect for this portfolio.
 
 
 
@@ -23,15 +25,17 @@ python3 -m http.server 8000
 # then open http://localhost:8000
 ```
 
-Any static host works for deployment (GitHub Pages, Netlify, Cloudflare Pages, and so on): upload `index.html`, `style.css`, `script.js`, `desk.css` and `desk.js`.
+Any static host works for deployment (GitHub Pages, Netlify, Cloudflare Pages, and so on): upload `index.html`, `style.css`, `script.js`, `desk.css`, `desk.js` and the `asset/` folder.
 
 ### What's on the page
 
 - **Split-flap greeting.** The page opens on a departure-board style "IT'S PHILIP" screen. Click anywhere to skip it.
 - **Swarm build.** Then up to eight named cursors (Ada, Linus, Grace, Dennis, Ken, Barbara, Alan, Margaret; five on narrow screens) drag out boxes and type the text of the whole page, from the nav bar down, building whatever is on screen as you scroll. If you jump ahead (say, with a nav link), the sections you skipped stay blank until you scroll back to them, and the cursors build them then. A HUD shows who's editing and the progress. Press **Esc** or **skip** to show everything at once.
-- **Draggable desk.** The hero is a desk of sticky notes, a split-flap card that cycles through phrases, a polaroid photo, a "Philip 5.5" chat box that opens the terminal, a "see my work" ticket and stickers. Everything on it can be dragged around (on screens wider than 900px), and **+ add a sticky note** lets visitors write their own notes.
+- **Draggable desk.** The hero is a desk of sticky notes (an intro, "where i've been" and "things i'm good at"), a split-flap card that cycles through phrases, a polaroid of Philip, a "Philip 5.5" chat box that opens the terminal, a "see my work" ticket and four stickers (football, coffee, fedora hat, terminal). Everything on it can be dragged around (on screens wider than 900px), and **+ add a sticky note** lets visitors write their own notes.
 - **LED name.** The hero name is drawn on a canvas as a dot-matrix LED sign (5×7 bitmap font, with faint unlit dots behind it). The dots rise into place when the swarm reaches it, lean toward your cursor like it's magnetic, and a ripple runs across them every few seconds.
-- **About, skills, projects, contact.** Plain content sections. Project cards hide links whose `href` is empty.
+- **About and skills.** Plain content sections. The about section ends with a "currently:" line.
+- **Projects.** Cards for the **B&S Terminal** (a Bloomberg-style NASDAQ + BSE market and options terminal with implied vol, GARCH forecasts, Monte Carlo and a delta-hedge backtest; [repo](https://github.com/Phil27-gotchu/Black-and-Scholes-eqn-with-GBM-)) and the **jaundice screening probe** (an ESP8266 colour-sensor probe with a live dashboard, collecting a newborn dataset in a hospital; [repo](https://github.com/Phil27-gotchu/Jaundice_detection)). Links with an empty `href` are hidden.
+- **Contact.** A row of word links: **email**, **github** and **linkedin**. Hovering one shows the full address, and a row with an empty `href` is hidden.
 - **Options lab.** A live Black-Scholes pricer: drag spot, strike, volatility, days to expiry and the risk-free rate to see the price, delta, gamma, theta and vega, plus a chart of value today against payoff at expiry. Below it, a delta-hedging simulation sells the option and runs 500 random price paths, comparing hedged and unhedged P&L for daily, every-5-days or one-time rebalancing.
 - **Terminal.** A working command line. Type `help` to list commands, including `whoami`, `projects`, `skills`, `contact`, `bs call 100 105 25 45` (price an option), `open <section>`, `theme <name>`, `rebuild` (run the swarm again) and `clear`, plus Fedora extras: `fastfetch` (or `neofetch`), `dnf install <pkg>`, `uname -a` and `cat /etc/os-release`. Up and down arrows recall history.
 - **Themes.** Six color themes (paper, fedora, night, ocean, ink, grape) from the dots in the nav or the `theme` command, saved in `localStorage`.
@@ -47,16 +51,14 @@ Any static host works for deployment (GitHub Pages, Netlify, Cloudflare Pages, a
 
 All content is in `index.html`. Anything marked `data-build="text"`, `"box"`, `"chip"` or `"pixels"` is animated by the swarm. Untagged elements just appear. To change the big name, edit `data-text` on `#pixel-name` (letters, digits, `-` and `.` are supported).
 
-These placeholders still need real values:
+One placeholder still needs real values: the third project card (`[project title]`, `[yyyy]`, `[short description of another project.]`, `[tag]` and its GitHub link). Fill it in, or delete that `<article class="card">` block if there's no third project yet.
 
-- the third project card (`[project title]`, `[short description of another project.]`, `[tag]`)
 ## Swarm Rebuild (Chrome extension)
 
 A Chrome extension that wipes any web page to a blank canvas and lets a swarm of multiplayer cursors build it back, live: crosshair-drawn boxes, typed text, pen-tool lines, ruler guides and ⌥-drag duplicates, until the page looks just like it did before.
 
 ### Install
 
-It isn't on the Chrome Web Store yet, so load it unpacked:
 
 1. Clone or download this repo.
 2. Open `chrome://extensions` and turn on **Developer mode** (top right).
@@ -116,8 +118,8 @@ There's a self-contained test page in [`demo/index.html`](demo/index.html) (an i
 | --- | --- |
 | `index.html` | The portfolio page and all of its content |
 | `style.css` | Layout, themes and swarm-cursor styles |
-| `script.js` | Split-flap greeting, pixel name, swarm build, options lab, terminal, themes and custom cursor |
-| `desk.css`, `desk.js` | The draggable desk hero: dragging, the split-flap card and visitor sticky notes |
+| `script.js` | Split-flap greeting, LED dot-matrix name, swarm build, options lab, terminal, themes and custom cursor |
+| `desk.css`, `desk.js` | The draggable desk hero: dragging, the split-flap card, the photo and chat box, and visitor sticky notes |
 | `asset/` | Photos. `me.webp` (polaroid) and `philip-chat.webp` (chat box) are the web-sized copies the site uses; the large `.png` files are the originals |
 | `_old-site/` | Backup of the previous, non-desk version of the site |
 | `swarm-rebuild/manifest.json` | Extension manifest (V3); permissions are `activeTab` and `scripting` only |
@@ -128,6 +130,3 @@ There's a self-contained test page in [`demo/index.html`](demo/index.html) (an i
 | `scripts/package.sh` | Builds the zip to upload to the Web Store |
 | `PRIVACY.md` | Privacy policy for the extension |
 
-## License
-
-None yet. The original Swarm site is published without a license and this project adapts parts of it, so please don't reuse this code without checking with [Joel Califa](https://joelcalifa.com) as well.
