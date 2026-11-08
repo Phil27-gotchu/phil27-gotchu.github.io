@@ -335,6 +335,7 @@
 
   const swarm = (function () {
     const CREW = ["#0d99ff", "#9747ff", "#f24822", "#14ae5c", "#f5a000", "#e5379b", "#0aa5a5", "#5b5bd6"];
+    const NAMES = ["Manila Ma'am", "Tina Ma'am", "Gidwani Ma'am", "Naik Sir", "Varghese Ma'am", "Helen Ma'am", "Priti Ma'am", "Veena Ma'am"];
     const ARROW = '<svg class="sw-arrow" width="16" height="20" viewBox="0 0 16 20" aria-hidden="true"><path d="M1.5 1.2v14.6l3.9-3.6 2.6 5.9 2.6-1.1-2.6-5.8h5.4z" fill="currentColor" stroke="#fff" stroke-width="1.5" stroke-linejoin="round" paint-order="stroke"/></svg>';
     const IBEAM = '<svg class="sw-ibeam" width="12" height="22" viewBox="0 0 12 22" aria-hidden="true"><path d="M2.5 2.5h2.2c.6 0 1.3.4 1.3 1.2 0-.8.7-1.2 1.3-1.2h2.2M6 3.7v14.6M2.5 19.5h2.2c.6 0 1.3-.4 1.3-1.2 0 .8.7 1.2 1.3 1.2h2.2" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/><path d="M2.5 2.5h2.2c.6 0 1.3.4 1.3 1.2 0-.8.7-1.2 1.3-1.2h2.2M6 3.7v14.6M2.5 19.5h2.2c.6 0 1.3-.4 1.3-1.2 0 .8.7 1.2 1.3 1.2h2.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>';
     const INTRO_MS = 1000;
@@ -385,6 +386,10 @@
       el.className = "sw-cursor";
       el.style.setProperty("--c", color);
       el.innerHTML = ARROW + IBEAM;
+      const tag = document.createElement("span");
+      tag.className = "sw-tag";
+      tag.textContent = NAMES[i];
+      el.append(tag);
       const selEl = document.createElement("div");
       selEl.className = "sw-sel";
       selEl.style.setProperty("--c", color);
@@ -700,8 +705,7 @@
       layer.className = "sw-layer";
       layer.setAttribute("aria-hidden", "true");
       document.body.append(layer);
-      const crew = innerWidth < 760 ? CREW.slice(0, 5) : CREW;
-      cursors = crew.map(makeCursor);
+      cursors = CREW.map(makeCursor);
       avatars.textContent = "";
       cursors.forEach((c) => {
         c.avatar = document.createElement("span");

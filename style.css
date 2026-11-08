@@ -1027,6 +1027,14 @@ kbd {
 }
 
 /* Footer */
+.thanks {
+  max-width: 100ch;
+  margin: 0 auto 1.25rem;
+  text-align: center;
+  font-style: italic;
+  line-height: 1.6;
+}
+
 .site-footer {
   padding: 2rem 0;
   border-top: 1px solid var(--line);
@@ -1085,6 +1093,19 @@ kbd {
 
 .sw-cursor.is-down svg {
   transform: scale(0.9);
+}
+
+.sw-tag {
+  position: absolute;
+  top: 18px;
+  left: 12px;
+  padding: 2px 7px;
+  border-radius: 6px;
+  background: var(--c);
+  color: #fff;
+  font: 600 11px/1.4 system-ui, sans-serif;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
 }
 
 .sw-sel {
