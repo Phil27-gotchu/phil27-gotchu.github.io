@@ -322,13 +322,6 @@ kbd {
   padding: 4rem 0 6rem;
 }
 
-.hero__inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
 .hero__meta {
   margin-bottom: 2.75rem;
   color: var(--a3);
@@ -361,13 +354,6 @@ kbd {
 .prompt {
   color: var(--accent);
   margin-right: 0.4rem;
-}
-
-.hero__actions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.6rem;
 }
 
 .btn {
@@ -403,35 +389,6 @@ kbd {
   color: var(--ink);
   box-shadow: none;
   transform: none;
-}
-
-.hero__scroll {
-  position: absolute;
-  left: 50%;
-  bottom: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.4rem;
-  transform: translateX(-50%);
-  color: var(--muted);
-  font-size: 0.6rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-}
-
-.hero__scroll i {
-  display: block;
-  width: 1px;
-  height: 28px;
-  background: var(--muted);
-  animation: scroll-hint 1.8s ease-in-out infinite;
-  transform-origin: top;
-}
-
-@keyframes scroll-hint {
-  0%, 100% { transform: scaleY(0.3); opacity: 0.4; }
-  50% { transform: scaleY(1); opacity: 1; }
 }
 
 /* Sections */
@@ -1282,57 +1239,12 @@ kbd {
 }
 
 /* Custom cursor (mouse and trackpad only) */
-.cursor-dot,
-.cursor-ring {
-  display: none;
-}
-
 @media (pointer: fine) {
   .has-custom-cursor,
   .has-custom-cursor * {
     cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='30' viewBox='-1 -1 18 22'%3E%3Cpath d='M1.5 1.2v14.6l3.9-3.6 2.6 5.9 2.6-1.1-2.6-5.8h5.4z' fill='black' stroke='white' stroke-width='1.4' stroke-linejoin='round'/%3E%3C/svg%3E") 3 2, auto !important;
   }
 
-  .has-custom-cursor .cursor-dot,
-  .has-custom-cursor .cursor-ring {
-    display: none !important;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1100;
-    pointer-events: none;
-    border-radius: 50%;
-    opacity: 0;
-    transition: opacity 0.2s;
-  }
-
-  .has-custom-cursor .cursor-dot {
-    width: 6px;
-    height: 6px;
-    margin: -3px 0 0 -3px;
-    background: var(--accent);
-  }
-
-  .has-custom-cursor .cursor-ring {
-    width: 30px;
-    height: 30px;
-    margin: -15px 0 0 -15px;
-    border: 1.5px solid var(--accent);
-    transition: opacity 0.2s, width 0.25s ease, height 0.25s ease,
-      margin 0.25s ease, background 0.25s ease;
-  }
-
-  .has-custom-cursor .cursor-ring.is-hovering {
-    width: 54px;
-    height: 54px;
-    margin: -27px 0 0 -27px;
-    background: color-mix(in srgb, var(--accent) 14%, transparent);
-  }
-
-  .has-custom-cursor .cursor-dot.is-active,
-  .has-custom-cursor .cursor-ring.is-active {
-    opacity: 1;
-  }
 }
 
 /* Mobile */

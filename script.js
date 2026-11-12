@@ -949,7 +949,7 @@
       const hedgedBins = count(sim.hedged);
       // Scale to the hedged distribution; a short option's unhedged p&l piles into one tall
       // "kept the premium" bar that would otherwise flatten everything else.
-      const peak = Math.max(...hedgedBins) * 1.1;
+      const peak = Math.max(1, Math.max(...hedgedBins) * 1.1);
       const bw = (w - pad.l - pad.r) / bins;
       const barH = (n) => Math.min(1, n / peak) * (h - pad.t - pad.b);
 
@@ -1252,49 +1252,8 @@
 
   /* ---------- custom cursor ---------- */
 
-  (function () {
-    const dot = $(".cursor-dot");
-    const ring = $(".cursor-ring");
-    if (!finePointer || !dot || !ring) return;
-
-    root.classList.add("has-custom-cursor");
-
-    const HOVER_TARGETS = "a, button, input, select, label, [role='button']";
-    const target = { x: innerWidth / 2, y: innerHeight / 2 };
-    const pos = { x: target.x, y: target.y };
-    let visible = false;
-
-    function setVisible(on) {
-      visible = on;
-      dot.classList.toggle("is-active", on);
-      ring.classList.toggle("is-active", on);
-    }
-
-    document.addEventListener("mousemove", (e) => {
-      target.x = e.clientX;
-      target.y = e.clientY;
-      if (!visible) {
-        pos.x = target.x;
-        pos.y = target.y;
-        setVisible(true);
-      }
-    });
-    document.addEventListener("mouseleave", () => setVisible(false));
-    document.addEventListener("mouseover", (e) => {
-      ring.classList.toggle("is-hovering", Boolean(e.target.closest(HOVER_TARGETS)));
-    });
-
-    function tick() {
-      // Lower values give a longer trail; reduced motion snaps the ring to the pointer.
-      const k = reducedMotion ? 1 : 0.18;
-      pos.x += (target.x - pos.x) * k;
-      pos.y += (target.y - pos.y) * k;
-      dot.style.transform = `translate3d(${target.x}px, ${target.y}px, 0)`;
-      ring.style.transform = `translate3d(${pos.x}px, ${pos.y}px, 0)`;
-      requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
-  })();
+  // The cursor itself is a CSS-only SVG arrow (see .has-custom-cursor in style.css).
+  if (finePointer) root.classList.add("has-custom-cursor");
 
   /* ---------- intro: split-flap greeting ---------- */
 

@@ -62,6 +62,7 @@
 
   // A drag that ends on a link shouldn't also follow it.
   desk.addEventListener("click", (e) => {
+    if (e.target.closest(".note__close")) { justDragged = null; return; }
     if (justDragged && e.target.closest("[data-drag]") === justDragged) {
       e.preventDefault();
       e.stopPropagation();
