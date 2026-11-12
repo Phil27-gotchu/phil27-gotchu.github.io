@@ -121,8 +121,6 @@ There's a self-contained test page in [`demo/index.html`](demo/index.html) (an i
 | `script.js` | Split-flap greeting, LED dot-matrix name, swarm build, options lab, terminal, themes and custom cursor |
 | `desk.css`, `desk.js` | The draggable desk hero: dragging, the split-flap card, the photo and chat box, and visitor sticky notes |
 | `asset/` | Photos. `me.webp` (polaroid) and `philip-chat.webp` (chat box) are the web-sized copies the site uses |
-| `_originals/` | The large original `.png` photos. Not used by the site and not needed for deployment |
-| `_old-site/` | Backup of the previous, non-desk version of the site |
 | `swarm-rebuild/manifest.json` | Extension manifest (V3); permissions are `activeTab` and `scripting` only |
 | `swarm-rebuild/background.js` | Handles the toolbar click: takes the media-only screenshot, then injects `swarm.js` (or toggles it off) |
 | `swarm-rebuild/swarm.js` | Snapshot, renderer and swarm engine, as one dependency-free content script |
