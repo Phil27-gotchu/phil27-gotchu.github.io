@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="paper">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>404 | Philip</title>
+  <!-- Root-absolute paths: GitHub Pages serves this file for missing URLs at any depth. -->
+  <link rel="stylesheet" href="/style.css?v=19">
+  <script>
+    (function () {
+      var d = document.documentElement;
+      try { var t = localStorage.getItem("theme"); if (t) d.dataset.theme = t; } catch (e) {}
+    })();
+  </script>
+  <style>
+    .nf { min-height: calc(100vh - var(--nav-height)); display: flex; align-items: center; padding: 3rem 0; }
+    .nf__code { margin: 0 0 0.5rem; color: var(--accent); font-size: clamp(3.5rem, 12vw, 6rem); font-weight: 700; line-height: 1; letter-spacing: -0.03em; }
+    .nf__title { margin: 0 0 1.5rem; font-size: clamp(1.2rem, 3vw, 1.6rem); }
+    .nf .term { margin-bottom: 2rem; }
+    .nf .term__body { min-height: 0; }
+    .nf__actions { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary">
+      <a class="nav__brand" href="/">~/philip</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container nf">
+      <div>
+        <p class="nf__code">404</p>
+        <h1 class="nf__title">Page not found</h1>
+
+        <div class="term">
+          <div class="term__bar">
+            <span class="term__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="term__title">visitor@fedora: ~</span>
+          </div>
+          <div class="term__body">
+            <div class="term__out">
+              <p class="term__echo" id="nf-cmd">visitor@fedora:~$ cd /</p>
+              <p class="term__err" id="nf-err">bash: cd: no such file or directory</p>
+              <p>try <b>cd ~</b> to go home, or pick a section below.</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="nf__actions">
+          <a class="btn btn--solid" href="/">Back home</a>
+          <a class="btn btn--line" href="/#projects">Projects</a>
+          <a class="btn btn--line" href="/#terminal">Terminal</a>
+          <a class="btn btn--line" href="/#contact">Contact</a>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Show the address the visitor actually tried, in the terminal's own voice.
+    (function () {
+      var path = location.pathname.replace(/[^\w\-./~%]/g, "") || "/";
+      document.getElementById("nf-cmd").textContent = "visitor@fedora:~$ cd " + path;
+      document.getElementById("nf-err").textContent = "bash: cd: " + path + ": No such file or directory";
+    })();
+  </script>
+</body>
+</html>

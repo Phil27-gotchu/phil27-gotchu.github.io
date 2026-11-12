@@ -1,6 +1,6 @@
 # ~/philip
 
-Personal portfolio of Philip Pereira, Im a  BE Computer Science Engineering student at MIT World Peace University, Pune, work with LLMs   and have a small  interest with quant finance tool and have built a  sustainable IoT Device  in health hardware and machine learning. I am currently building a SAN navigation system for a DRDO project.
+Personal portfolio of Philip Pereira, a B.E. Computer Science Engineering student at MIT World Peace University, Pune. I work with LLMs, have a keen interest in quant finance tools, and have built a sustainable IoT device that combines health hardware with machine learning. I am currently building a SAN navigation system for a DRDO project.
 
 - **Email:** [philippereira2701@gmail.com](mailto:philippereira2701@gmail.com)
 - **GitHub:** [@Phil27-gotchu](https://github.com/Phil27-gotchu)
@@ -25,7 +25,7 @@ python3 -m http.server 8000
 # then open http://localhost:8000
 ```
 
-Any static host works for deployment (GitHub Pages, Netlify, Cloudflare Pages, and so on): upload `index.html`, `style.css`, `script.js`, `desk.css`, `desk.js` and the `asset/` folder.
+Any static host works for deployment (GitHub Pages, Netlify, Cloudflare Pages, and so on): upload `index.html`, `404.html`, `style.css`, `script.js`, `desk.css`, `desk.js` and the `asset/` folder.
 
 ### What's on the page
 
@@ -34,7 +34,7 @@ Any static host works for deployment (GitHub Pages, Netlify, Cloudflare Pages, a
 - **Draggable desk.** The hero is a desk of sticky notes (an intro, "where i've been" and "things i'm good at"), a split-flap card that cycles through phrases, a polaroid of Philip, a "Philip 5.5" chat box that opens the terminal, a "see my work" ticket and four stickers (football, coffee, fedora hat, terminal). Everything on it can be dragged around (on screens wider than 900px), and **+ add a sticky note** lets visitors write their own notes.
 - **LED name.** The hero name is drawn on a canvas as a dot-matrix LED sign (5×7 bitmap font, with faint unlit dots behind it). The dots rise into place when the swarm reaches it, lean toward your cursor like it's magnetic, and a ripple runs across them every few seconds.
 - **About and skills.** Plain content sections. The about section ends with a "currently:" line.
-- **Projects.** Cards for the **B&S Terminal** (a Bloomberg-style NASDAQ + BSE market and options terminal with implied vol, GARCH forecasts, Monte Carlo and a delta-hedge backtest; [repo](https://github.com/Phil27-gotchu/Black-and-Scholes-eqn-with-GBM-)) and the **jaundice screening probe** (an ESP8266 colour-sensor probe with a live dashboard, collecting a newborn dataset in a hospital; [repo](https://github.com/Phil27-gotchu/Jaundice_detection)). Links with an empty `href` are hidden.
+- **Projects.** Cards for the **smart parking allocation** system (YOLOv8 plate detection plus a fine-tuned character CNN for Indian HSRP plates; [repo](https://github.com/aaship10/smart_parking_allocation)), the **B&S Terminal** (a Bloomberg-style NASDAQ + BSE market and options terminal with implied vol, GARCH forecasts, Monte Carlo and a delta-hedge backtest; [repo](https://github.com/Phil27-gotchu/Black-and-Scholes-eqn-with-GBM-)) and the **jaundice screening probe** (an ESP8266 colour-sensor probe with a live dashboard, collecting a newborn dataset in a hospital; [repo](https://github.com/Phil27-gotchu/Jaundice_detection)). Links with an empty `href` are hidden.
 - **Contact.** A row of word links: **email**, **github** and **linkedin**. Hovering one shows the full address, and a row with an empty `href` is hidden.
 - **Options lab.** A live Black-Scholes pricer: drag spot, strike, volatility, days to expiry and the risk-free rate to see the price, delta, gamma, theta and vega, plus a chart of value today against payoff at expiry. Below it, a delta-hedging simulation sells the option and runs 500 random price paths, comparing hedged and unhedged P&L for daily, every-5-days or one-time rebalancing.
 - **Terminal.** A working command line. Type `help` to list commands, including `whoami`, `projects`, `skills`, `contact`, `bs call 100 105 25 45` (price an option), `open <section>`, `theme <name>`, `rebuild` (run the swarm again) and `clear`, plus Fedora extras: `fastfetch` (or `neofetch`), `dnf install <pkg>`, `uname -a` and `cat /etc/os-release`. Up and down arrows recall history.
